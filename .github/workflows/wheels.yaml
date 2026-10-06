@@ -2,7 +2,6 @@ name: Wheels
 
 on:
   push:
-    branches: [feature/add-cibuildwheel]
     tags:
       - "v*.*.*"
   workflow_dispatch:
@@ -30,8 +29,6 @@ jobs:
       - name: Install cibuildwheel
         run: python -m pip install cibuildwheel
 
-      # Build settings (python versions, skips, macOS target) live in
-      # [tool.cibuildwheel] in pyproject.toml
       - name: Build wheels
         run: python -m cibuildwheel --output-dir wheelhouse
         env:
